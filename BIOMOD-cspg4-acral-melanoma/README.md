@@ -1,8 +1,8 @@
-# BIOMOD 2026 «Caja de Pandora» · Protocolo 1: expresión de CSPG4 en melanoma acral mexicano
+# BIOMOD 2026 «Caja de Pandora» · Protocolo: expresión de CSPG4 en melanoma acral mexicano
 
 Responsable: Rubí
 
-> **Estado: borrador de trabajo.** Los resultados son exploratorios y hay pendientes de terceros (ver «Pendientes»). No son una conclusión definitiva.
+> **Estado: borrador de trabajo.** Los resultados son exploratorios y hay pendientes de terceros («Pendientes»). No son una conclusión definitiva.
 
 ## Qué se evalúa
 
