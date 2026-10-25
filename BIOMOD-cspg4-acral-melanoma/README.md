@@ -1,44 +1,68 @@
-# BIOMOD 2026 «Caja de Pandora»: validación bioinformática de CSPG4 en melanoma acral
+# BIOMOD 2026 «Caja de Pandora» · Protocolo 1: expresión de CSPG4 en melanoma acral mexicano
 
-Evaluación de la expresión de ARNm de **CSPG4** en piel sana, melanoma cutáneo y melanoma acral de pacientes mexicanos, con datos públicos de RNA-seq (GTEx, TCGA-SKCM) y la cohorte publicada por Basurto-Lozada et al. (*Nature*, 2026). Responsable: Rubí.
+Responsable: Rubí
 
-> **Hipótesis (no conclusión):** la expresión de CSPG4 en melanoma acral es mayor que en piel sana y comparable a la de melanoma cutáneo. Se reporta el resultado sea cual sea, con tamaños de efecto.
+> **Estado: borrador de trabajo.** Los resultados son exploratorios y hay pendientes de terceros (ver «Pendientes»). No son una conclusión definitiva.
 
-## Cómo está organizado el análisis
+## Qué se evalúa
 
-| Nivel | Qué | Script | Validez |
-|---|---|---|---|
-| A | CSPG4 en 44 melanomas acrales mexicanos (ulceración, estadio, cluster) | `01_nivelA_acral_mexicano.R` | Análisis interno, sin batch entre fuentes |
-| B | CSPG4 en TCGA-SKCM, primario vs metástasis (DESeq2) | `02_nivelB_tcga_skcm.R` | Formal dentro de TCGA |
-| C | CSPG4 en piel sana (GTEx) y otros tejidos | `03_nivelC_gtex.R` | Referencia descriptiva |
-| — | Integración de A + B + C y figura principal | `04_integracion_figuras.R` | **Exploratoria** (inter-estudio, sin corrección de batch) |
+Si el patrón de expresión del ARNm de **CSPG4** (ENSG00000173546) respalda o limita su uso como blanco del direccionamiento activo del nanovehículo del equipo. Se compara la expresión, en escala log2(TPM + 1), entre tres condiciones y se contextualiza con otros tejidos normales:
 
-**Por qué no se corrige batch entre fuentes:** cada grupo proviene de una sola fuente, así que fuente y condición son la misma variable y la corrección borraría la diferencia biológica. Wang et al. (*Sci Data* 2018) pudieron corregir entre GTEx y TCGA porque comparten tejidos normales; melanoma quedó fuera de su conjunto.
+| Grupo | Condición | Fuente |
+|---|---|---|
+| G1a / G1b | Piel sana no acral (no expuesta / expuesta al sol) | GTEx v8 |
+| G2 | Melanoma cutáneo primario | TCGA-SKCM (GDC) |
+| G3 | Melanoma acral primario (44 muestras; 65 en sensibilidad) | Cohorte mexicana, Basurto-Lozada et al. (referencia completa por verificar; el repositorio de los autores indica 2024) |
+| Contexto | 54 tejidos normales (medianas) | GTEx v8 |
 
-## Cómo correrlo
-Desde la raíz del repositorio:
+Código de los autores de la cohorte: https://github.com/CGBio-Lab/Mex-acral-exomes-transcriptomes
+
+## Resultados principales (exploratorios)
+
+Cada condición viene de un solo estudio, así que **fuente y condición están confundidas**: no se aplicó corrección de lote y las diferencias entre fuentes no se pueden atribuir solo a la biología.
+
+- Medianas de log2(TPM + 1): piel no expuesta 3.576, piel expuesta 3.830, melanoma cutáneo primario 7.673, melanoma acral primario 5.511.
+- Acral frente a piel sana: mayor, con efecto mediano a grande (delta de Cliff −0.66 y −0.61; el signo negativo indica que la piel tiene menor expresión).
+- Acral frente a melanoma cutáneo primario: menor, con efecto en el límite entre mediano y grande según los umbrales del protocolo (delta de Cliff +0.48, IC 95 % 0.31 a 0.63). Esta diferencia **depende de la prueba usada**: con Brunner-Munzel p ajustado = 1.5e-7, y con Kruskal-Wallis + Dunn p ajustado = 0.077.
+- CSPG4 también se expresa en piel sana y en otros tejidos normales; 10 de 54 tejidos tienen una mediana mayor que la del grupo acral (medianas de tejido completo, sin prueba estadística).
+- Sin asociación detectable con estadio, ulceración, sexo, clúster, pureza tumoral ni fracciones celulares estimadas en las 44 muestras acrales (poder bajo).
+
+## Qué no se puede concluir
+
+La expresión de ARN no demuestra proteína en la superficie celular, accesibilidad del epítopo, unión ni internalización del nanovehículo, ni especificidad tumoral. GTEx no incluye piel acral ni melanocitos aislados. La diferencia entre piel expuesta y no expuesta mezcla sitio anatómico y exposición solar.
+
+## Cómo reproducir
+
+Los datos **no están en el repositorio**. Hay que obtenerlos y colocarlos según `data/README.md`. Después, desde la raíz del proyecto:
+
 ```
-Rscript scripts/01_nivelA_acral_mexicano.R
-Rscript scripts/02_nivelB_tcga_skcm.R
-Rscript scripts/03_nivelC_gtex.R
-Rscript scripts/04_integracion_figuras.R
+Rscript scripts/00_preparar_tablas.R
+Rscript scripts/05_objetivo1_final.R
+Rscript scripts/06_apendice_clinico_acral.R
 ```
-Antes: descargar los datos (ver `data/README.md`) y revisar `scripts/config.R` (nombres de archivos y columnas).
 
-## Estado de las pruebas (leer antes de usar)
-| Script | Estado |
+Versión de R y paquetes: ver `entrega_objetivo1/3_reporte_y_figuras/sessionInfo.txt`. El script 05 incluye 17 verificaciones automáticas de auditoría.
+
+## Estructura
+
+| Carpeta | Contenido |
 |---|---|
-| 01, 03, 04, `helpers.R` | Probados con **datos simulados** (R 4.3.3, ggplot2). Funcionan, pero **no se han corrido con los datos reales**. |
-| 02 | **Solo revisada la sintaxis.** Necesita descargar TCGA-SKCM y paquetes de Bioconductor. Revisar cada mensaje al correrlo. |
-| Prueba de Dunn | Implementada a mano; con 2 grupos reproduce exactamente el p de `wilcox.test` (verificado). |
+| `scripts/` | Los tres scripts del análisis |
+| `docs/` | `DECISIONES.md` (decisiones y su evidencia), `BITACORA.md`, `CAMBIOS_PROTOCOLO_v2.md` |
+| `entrega_objetivo1/` | Protocolo y resultados, reporte, figuras y tablas resumen agregadas |
 
-Paquetes: R base, `ggplot2`; para el script 02: `TCGAbiolinks`, `SummarizedExperiment`, `DESeq2`, `apeglm` (Bioconductor).
+## Datos y privacidad
 
-## Documentación
-- `docs/VERIFICACION.md`: lista de cosas por confirmar antes de citar o interpretar.
-- `docs/PLAN_B_DATOS.md`: fuentes alternativas si no llega el acceso a los datos.
-- `docs/BITACORA.md`: registro de cada sesión de análisis.
-- Protocolo completo: «Protocolo 1: Validación bioinformática de CSPG4 en melanoma acral (BIOMOD 2026)» (exportar a Markdown y guardar en `docs/`).
+Este repositorio es público. No se suben datos crudos ni tablas por muestra de pacientes mexicanos hasta contar con el visto bueno de las autoras y autores del estudio original. Los archivos que contienen datos por muestra están excluidos en `.gitignore`.
+
+## Pendientes
+
+- Respuesta de la colaboración (Stef / Dra. Vázquez): matriz de 44 muestras, cuáles de las 65 primarias están en la publicación y pipeline de cuantificación.
+- Verificar la referencia completa de la cohorte (Basurto-Lozada et al.): revista, año y volumen.
+- Versión de GENCODE de GTEx v8, y fecha de consulta de la identidad del gen en NCBI Gene.
+- Aprobación del equipo de los cambios al protocolo.
+- Visto bueno para publicar figuras y tablas que muestran valores individuales de la cohorte mexicana.
+- Licencia del repositorio: sin decidir (no se agrega archivo LICENSE hasta entonces).
 
 ## Fuentes principales
 - Basurto-Lozada P, et al. *Nature* 2026;651:221-230. Código de los autores: https://github.com/CGBio-Lab/Mex-acral-exomes-transcriptomes
