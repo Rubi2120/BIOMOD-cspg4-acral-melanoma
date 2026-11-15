@@ -1,0 +1,18 @@
+"test","detail","ok"
+"Sample counts: 604/701/103/44","604/701/103/44",TRUE
+"Unique sample identifiers","0",TRUE
+"Finite expression values","0",TRUE
+"TCGA primary tumors: unique patients","0",TRUE
+"Acral: 44 primary tumors among 86 samples","44 primary",TRUE
+"Acral: 65 primary tumors","65",TRUE
+"Expected group medians","3.5759/3.8298/7.6731/5.5107",TRUE
+"Paired GTEx donors","470",TRUE
+"Paired Hodges-Lehmann estimate","0.2131",TRUE
+"Benjamini-Hochberg adjustment","",TRUE
+"Bootstrap CIs contain point estimates","",TRUE
+"All six adjusted P values below 0.05","6.24e-07 (max)",TRUE
+"Brunner-Munzel P values agree with previous analysis","",TRUE
+"54 GTEx categories","54",TRUE
+"10 categories above the acral median","10",TRUE
+"RNA samples matched to supplementary data","63 of 86",TRUE
+"44 samples matched to deconvolution data","44",TRUE

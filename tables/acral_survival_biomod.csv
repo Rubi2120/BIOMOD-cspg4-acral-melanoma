@@ -1,0 +1,2 @@
+"n","events","median_followup_months","HR_per_log2_unit","CI95_lower","CI95_upper","p_cox","p_logrank_high_vs_low","p_proportional_hazards"
+44,10,52.5,1.59582789914755,1.06941693686089,2.38135996908094,0.0221034640001365,0.29454693151778,0.176282883476411

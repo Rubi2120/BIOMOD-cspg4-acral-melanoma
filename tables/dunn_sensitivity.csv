@@ -1,0 +1,7 @@
+"Comparison","Z","P.unadj","P.adj"
+"G1a GTEx non-sun-exposed skin - G1b GTEx sun-exposed skin",-6.35374302249832,2.10137775978026e-10,3.15206663967039e-10
+"G1a GTEx non-sun-exposed skin - G2 TCGA primary cutaneous melanoma",-14.628743279622,1.84157338505368e-48,1.10494403103221e-47
+"G1b GTEx sun-exposed skin - G2 TCGA primary cutaneous melanoma",-11.4356880148187,2.77329593932128e-30,8.31988781796383e-30
+"G1a GTEx non-sun-exposed skin - G3 Mexican primary acral melanoma",-7.94572351262387,1.93060604980243e-15,3.86121209960487e-15
+"G1b GTEx sun-exposed skin - G3 Mexican primary acral melanoma",-5.71363662500293,1.10587009396776e-08,1.32704411276131e-08
+"G2 TCGA primary cutaneous melanoma - G3 Mexican primary acral melanoma",1.76986483373254,0.0767496602775309,0.0767496602775309

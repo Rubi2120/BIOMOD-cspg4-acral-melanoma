@@ -1,0 +1,5 @@
+"variable","test","n","effect_type","effect","CI95_lower","CI95_upper","p","p_BH"
+"cluster (3 groups)","Kruskal-Wallis",44,"epsilon^2",0.0355733413872948,NA,NA,0.465414515255171,0.652135417196217
+"stage (0-4, ordinal)","Spearman",44,"Spearman rho",0.107065381548533,NA,NA,0.489101562897163,0.652135417196217
+"ulceration (present vs absent)","Brunner-Munzel",43,"Cliff's delta",0.174358974358974,-0.17948717948718,0.507692307692308,0.34743398455971,0.652135417196217
+"sex (M vs F)","Brunner-Munzel",44,"Cliff's delta",0.00631578947368427,-0.343157894736842,0.36,0.972374852594475,0.972374852594475

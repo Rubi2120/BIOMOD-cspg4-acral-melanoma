@@ -1,50 +1,59 @@
-# History files
+# Pandora's Box - BIOMOD 2026
+# Private data and local analysis files
+
+/data/
+/datos/
+/raw/
+/processed/
+/private/
+/results_v2/
+/global_in/
+/no_ocupar/
+/entrega_objetivo1/
+/local_R_library/
+/renv/library/
+
+*.rds
+*.RDS
+*.RData
+*.rdata
+*.rda
+*.gct
+*.gct.gz
+
+sample_metadata.csv
+acral_patient_purity.csv
+clinical_descriptive_full.csv
+primary_and_metastatic_patient_samples.csv
+nivelA_CSPG4_44muestras.csv
+acral_MX_TPMs_qcpassed.tsv
+acral_MX_metadata_.csv
+acralMX_metadata_cc_update.csv
+Supplementary_Table_1.csv
+Sample_pass_deconvolution_data.csv
+
+sessionInfo.txt
+workflow_progress.csv
+output_inventory.csv
+integrated_reproduction_checks.csv
+final_reconciled_reproduction_checks.csv
+
 .Rhistory
 .Rapp.history
-
-# Session Data files
-.RData
-.RDataTmp
-
-# User-specific files
 .Ruserdata
-
-# Example code in package build process
-*-Ex.R
-
-# Output files from R CMD build
-/*.tar.gz
-
-# Output files from R CMD check
-/*.Rcheck/
-
-# RStudio files
 .Rproj.user/
-
-# produced vignettes
-vignettes/*.html
-vignettes/*.pdf
-
-# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
-.httr-oauth
-
-# knitr and R markdown default cache directories
-*_cache/
-/cache/
-
-# Temporary files created by R markdown
-*.utf8.md
-*.knit.md
-
-# R Environment Variables
 .Renviron
-.env
+.Renviron.*
+*.Rproj
+*.log
+*.tmp
+*.bak
+*~
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
 
-# pkgdown site
-docs/
-
-# translation temp files
-po/*~
-
-# RStudio Connect folder
-rsconnect/
+# Figures pending redistribution authorization
+/figures/CSPG4_expression_comparison.png
+/figures/CSPG4_acral44_clinical.png

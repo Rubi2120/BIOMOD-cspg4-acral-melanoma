@@ -1,0 +1,4 @@
+"contrast","n1","n2","cliff_delta","p"
+"G1a GTEx non-sun-exposed skin vs acral (65 primary tumors)",604,65,-0.706418746816098,7.56247785244057e-15
+"G1b GTEx sun-exposed skin vs acral (65 primary tumors)",701,65,-0.65719302095907,6.07726099863687e-12
+"G2 TCGA primary cutaneous melanoma vs acral (65 primary tumors)",103,65,0.476624346527259,5.60270821312382e-09
